@@ -43,7 +43,7 @@ const queueCompletedRef = db.collection("queue_completed");
  * @returns {Promise<string>} The ID of the pod
  */
 export const initPod = async () => {
-  if (!(await podsListRef.get().exists)) await podsListRef.create({ last_assigned_pod: "", pods: [] });
+  if (!((await podsListRef.get()).exists)) await podsListRef.create({ last_assigned_pod: "", pods: [] });
   const batch = db.batch();
   batch.create(podRef, {
     id: ID,

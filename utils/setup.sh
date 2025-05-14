@@ -59,16 +59,8 @@ apt install python3-tk -y
 
 # Install node
 print_message "Installing node..."
-export NVM_DIR="/root/.nvm"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
-# Cargar NVM explícitamente en este mismo script
-export NVM_DIR="/root/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && source "$NVM_DIR/bash_completion"
-
-nvm install 22
-nvm use 22
+curl -o- https://fnm.vercel.app/install | bash
+fnm install 22
 
 #install pm2
 print_message "Installing pm2..."

@@ -10,7 +10,8 @@
       "name": "comfy",
       "script": "main.py",
       "cwd": "/home/flux/ComfyUI",
-      "interpreter": "/home/flux/ComfyUI/.venv/bin/python"
+      "interpreter": "/home/flux/ComfyUI/.venv/bin/python",
+      "watch": true
     }
   ]
 }

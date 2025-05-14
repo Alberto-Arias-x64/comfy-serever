@@ -24,14 +24,15 @@ if (!admin.apps.length) {
 const db = admin.firestore();
 
 const ID = randomUUID();
-const podRef = db.collection("pots").doc(ID);
+const podRef = db.collection("pods").doc(ID);
+const podLogsRef = db.collection("pods").doc(ID).collection("logs");
 
 export const initPod = async () => {
   await podRef.create({
     id: ID,
     status: POD_STATUS.IDLE,
-    createdAt: admin.firestore.Timestamp.now(),
-    updatedAt: admin.firestore.Timestamp.now(),
+    created_at: admin.firestore.Timestamp.now(),
+    updated_at: admin.firestore.Timestamp.now(),
   });
   return ID;
 };
@@ -43,30 +44,40 @@ export const initPod = async () => {
 export const changePodStatus = async (status) => {
   await podRef.update({
     status,
-    updatedAt: admin.firestore.Timestamp.now(),
+    updated_at: admin.firestore.Timestamp.now(),
   });
 };
 
 export const readPendingQueue = async () => {
-  const snapshot = await db.collection(podRef.path, "queue_pending").get();
+  const snapshot = await podRef.collection("queue_pending").get();
   return snapshot.docs.map((doc) => doc.data());
 };
 
 /**
- * @param {string} id
- * @param {string} status
+ * @param {object} task
  * @param {string[]} outputs
  * @description Moves a pending task to the completed queue
  */
-export const moveToCompletedQueue = async (id, status, outputs = []) => {
+export const completedTask = async (task, outputs = []) => {
   const batch = db.batch();
-  batch.create(db.collection(podRef.path, "queue_completed").doc(id), {
-    id,
-    createdAt: admin.firestore.Timestamp.now(),
-    updatedAt: admin.firestore.Timestamp.now(),
-    status,
+  batch.create(podRef.collection("queue_completed").doc(task.id), {
+    id: task.id,
+    created_at: task.created_at,
+    updated_at: admin.firestore.Timestamp.now(),
+    status: outputs.length > 0 ? TASK_STATUS.COMPLETED : TASK_STATUS.ERROR,
     outputs,
   });
-  batch.delete(db.collection(podRef.path, "queue_pending").doc(id));
+  batch.delete(podRef.collection("queue_pending").doc(task.id));
   await batch.commit();
+};
+
+/**
+ * @param {string} message
+ * @description Writes a log message to the pod's logs
+ */
+export const writePodLog = async (message) => {
+  await podLogsRef.add({
+    message,
+    created_at: admin.firestore.Timestamp.now(),
+  });
 };

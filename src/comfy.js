@@ -61,7 +61,7 @@ const processOutputs = (data) => {
 
 /**
  * @param {object} prompt
- * @param {Object} prompt.seed - Random seed for generation. If not provided, a random seed will be generated
+ * @param {number} [prompt.seed] - Random seed for generation. If not provided, a random seed will be generated
  * @param {number} [prompt.steps] - Number of diffusion steps. Defaults to 28
  * @param {string} [prompt.prompt] - Text prompt for image generation. Defaults to a detailed tattoo description
  * @param {number} [prompt.guidance] - Guidance scale for the model. Defaults to 3.6

@@ -33,6 +33,7 @@ apt update && apt upgrade -y
 print_message "Cloning ComfyUI..."
 cd /home/flux
 git clone https://github.com/comfyanonymous/ComfyUI.git
+cd /home/flux/ComfyUI
 
 print_message "Creating virtual environment..."
 python3 -m venv .venv
@@ -41,14 +42,13 @@ source .venv/bin/activate
 
 # Install dependencies
 print_message "Installing dependencies..."
-pip3 install -r requirements.txt
 pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
+pip3 install -r requirements.txt
 
 # Install Models
 print_message "Installing Models..."
-cd models
+cd /home/flux/ComfyUI/models
 curl -L -O https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
-cd ..
 
 deactivate
 

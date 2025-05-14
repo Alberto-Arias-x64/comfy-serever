@@ -87,5 +87,8 @@ print_message "Setting up ComfyUI..."
 chmod +x /home/flux/server/utils/setup_comfy.sh
 /home/flux/server/utils/setup_comfy.sh
 
-print_warning "Please reboot your system."
+# StartUp server
+print_message "Starting server..."
+pm2 start /home/flux/server/utils/ecosystem.config.json
+
 print_message "Installation complete!"

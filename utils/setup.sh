@@ -51,14 +51,14 @@ apt install python3-venv -y
 apt install python3-tk -y
 
 ## Install Cuda
-print_message "Installing Cuda..."
-apt install ubuntu-drivers-common -y
-#ubuntu-drivers devices
-ubuntu-drivers autoinstall
-wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
-dpkg -i cuda-keyring_1.1-1_all.deb
-apt-get update
-#apt-get -y install cuda-toolkit-12-4
+# print_message "Installing Cuda..."
+# apt install ubuntu-drivers-common -y
+# ubuntu-drivers devices
+# ubuntu-drivers autoinstall
+# wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+# dpkg -i cuda-keyring_1.1-1_all.deb
+# apt-get update
+# apt-get -y install cuda-toolkit-12-4
 
 # Install node
 print_message "Installing node..."
@@ -86,9 +86,5 @@ npm install
 print_message "Setting up ComfyUI..."
 chmod +x /home/flux/server/utils/setup_comfy.sh
 /home/flux/server/utils/setup_comfy.sh
-
-# StartUp server
-# print_message "Starting server..."
-# pm2 start /home/flux/server/utils/ecosystem.config.json
 
 print_message "Installation complete!"

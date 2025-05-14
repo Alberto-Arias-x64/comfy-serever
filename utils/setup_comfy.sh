@@ -42,8 +42,8 @@ source .venv/bin/activate
 
 # Install dependencies
 print_message "Installing dependencies..."
-pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 pip3 install -r requirements.txt
+pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 
 # Install Models
 print_message "Installing Models..."

@@ -88,7 +88,7 @@ chmod +x /home/flux/server/utils/setup_comfy.sh
 /home/flux/server/utils/setup_comfy.sh
 
 # StartUp server
-print_message "Starting server..."
-pm2 start /home/flux/server/utils/ecosystem.config.json
+# print_message "Starting server..."
+# pm2 start /home/flux/server/utils/ecosystem.config.json
 
 print_message "Installation complete!"

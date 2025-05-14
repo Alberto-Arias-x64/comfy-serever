@@ -40,8 +40,8 @@ apt install -y \
   libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
   libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev \
   libffi-dev liblzma-dev
-apt install python3-venv
-apt install python3-tk
+apt install python3-venv -y
+apt install python3-tk -y
 
 ## Install Cuda
 print_message "Installing Cuda..."
@@ -59,15 +59,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 \. "$HOME/.nvm/nvm.sh"
 nvm install 22
 
-# Create working directory
-print_message "Creating working directory..."
-mkdir -p /home/flux
-cd /home/flux
-
 #install pm2
 print_message "Installing pm2..."
 npm install pm2 -g
 pm2 completion install
+
+# Create working directory
+print_message "Creating working directory..."
+mkdir -p /home/flux
+cd /home/flux
 
 # Setup Server
 print_message "Setting up Server..."

@@ -47,7 +47,7 @@ export const initPod = async () => {
   const batch = db.batch();
   batch.create(podRef, {
     id: ID,
-    active: true,
+    is_active: true,
     status: POD_STATUS.IDLE,
     created_at: admin.firestore.Timestamp.now(),
     updated_at: admin.firestore.Timestamp.now(),

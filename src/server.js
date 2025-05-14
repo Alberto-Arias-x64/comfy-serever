@@ -1,4 +1,4 @@
-import { initPod, readPendingQueue, completedTask, POD_STATUS, changePodStatus, writePodLog, changeTaskStatus } from "./firebase.js";
+import { initPod, readPendingQueue, completedTask, POD_STATUS, changePodStatus, writePodLog, changeTaskStatus, TASK_STATUS } from "./firebase.js";
 import { CLOUDFLARE_SERVICE, FIREBASE_SERVICE, POLLING_TIME } from "./config.js";
 import { getAspectRatio, createPrediction } from "./comfy.js";
 import { diffMilliseconds } from "@formkit/tempo";

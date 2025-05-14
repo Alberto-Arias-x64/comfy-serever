@@ -25,6 +25,9 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
 # Update system
 print_message "Updating system..."
 apt update && apt upgrade -y
@@ -55,7 +58,7 @@ ubuntu-drivers autoinstall
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
 dpkg -i cuda-keyring_1.1-1_all.deb
 apt-get update
-apt-get -y install cuda-toolkit-12-4
+#apt-get -y install cuda-toolkit-12-4
 
 # Install node
 print_message "Installing node..."

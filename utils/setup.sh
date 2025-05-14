@@ -33,6 +33,10 @@ apt update && apt upgrade -y
 print_message "Installing curl..."
 apt install -y curl
 
+# Install git
+print_message "Installing git..."
+apt install -y git
+
 # Install python
 print_message "Installing python..."
 apt install -y \
@@ -46,7 +50,7 @@ apt install python3-tk -y
 ## Install Cuda
 print_message "Installing Cuda..."
 apt install ubuntu-drivers-common -y
-ubuntu-drivers devices
+#ubuntu-drivers devices
 ubuntu-drivers autoinstall
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
 dpkg -i cuda-keyring_1.1-1_all.deb

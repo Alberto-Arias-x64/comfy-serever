@@ -18,3 +18,5 @@ export const COMFY_SERVER = "http://127.0.0.1:8188";
 export const BUCKET_NAME = "tattoo-ia";
 export const OUTPUT_PATH = __output;
 export const LOG_PATH = __logs;
+
+export const POLLING_TIME = 1000;

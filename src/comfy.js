@@ -14,8 +14,8 @@ const modifyWorkflow = (workflow, data) => {
   workflow["31"]["inputs"]["steps"] = data?.["steps"] ?? 28;
   workflow["6"]["inputs"]["text"] = data?.["prompt"] ?? "A simple tattoo of 'Hello, world!'";
   workflow["35"]["inputs"]["guidance"] = data?.["guidance"] ?? 3.6;
-  workflow["63"]["inputs"]["width"] = data?.["width"] ?? 768;
-  workflow["63"]["inputs"]["height"] = data?.["height"] ?? 768;
+  workflow["63"]["inputs"]["width"] = data?.["width"] ?? 1024;
+  workflow["63"]["inputs"]["height"] = data?.["height"] ?? 1024;
   workflow["63"]["inputs"]["batch_size"] = data?.["batch_size"] ?? 1;
   return workflow;
 };
@@ -60,6 +60,18 @@ const processOutputs = (data) => {
 }
 
 /**
+ * @param {string} aspectRatio
+ * @returns {object}
+ * @description Returns the width and height of the output image based on the aspect ratio
+ */
+export const getAspectRatio = (aspectRatio) => {
+  if (aspectRatio === undefined) return { width: 1024, height: 1024 };
+  if (aspectRatio === "portrait") return { width: 1024, height: 576 };
+  if (aspectRatio === "landscape") return { width: 576, height: 1024 };
+  return { width: 1024, height: 1024 };
+}
+
+/**
  * @param {object} prompt
  * @param {number} [prompt.seed] - Random seed for generation. If not provided, a random seed will be generated
  * @param {number} [prompt.steps] - Number of diffusion steps. Defaults to 28
@@ -71,7 +83,7 @@ const processOutputs = (data) => {
  * @returns {Promise<string[]>}
  * @description Creates a prediction with the given prompt and returns the output images
  */
-export default async function CreatePrediction(prompt) {
+export async function createPrediction(prompt) {
   const prompt_id = await makeRequest(modifyWorkflow(COMFY_WORKFLOW, prompt));
   while (true) {
     await new Promise(resolve => setTimeout(resolve, 1000))

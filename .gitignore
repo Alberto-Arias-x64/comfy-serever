@@ -6,5 +6,4 @@ cloudflare-service.json
 package-lock.json
 
 node_modules/
-config/
 logs/

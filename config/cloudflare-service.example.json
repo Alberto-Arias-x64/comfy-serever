@@ -1,0 +1,8 @@
+{
+  "region": "auto",
+  "endpoint": "https://your-account-id.r2.cloudflarestorage.com",
+  "credentials": {
+    "accessKeyId": "your-access-key-id",
+    "secretAccessKey": "your-secret-access-key"
+  }
+} 

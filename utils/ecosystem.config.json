@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "server",
+      "script": "src/server.js",
+      "cwd": "/home/flux/server",
+      "watch": true
+    },
+    {
+      "name": "comfy",
+      "script": "main.py",
+      "cwd": "/home/flux/ComfyUI",
+      "interpreter": "/home/flux/ComfyUI/.venv/bin/python"
+    }
+  ]
+}

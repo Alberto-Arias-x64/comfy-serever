@@ -31,9 +31,9 @@ apt update && apt upgrade -y
 
 # Clone ComfyUI
 print_message "Cloning ComfyUI..."
-cd /workspace
+cd /home/flux
 git clone https://github.com/comfyanonymous/ComfyUI.git
-cd /workspace/ComfyUI
+cd /home/flux/ComfyUI
 
 print_message "Creating virtual environment..."
 python3 -m venv .venv
@@ -47,7 +47,7 @@ pip3 install --pre torch torchvision torchaudio --index-url https://download.pyt
 
 # Install Models
 # print_message "Installing Models..."
-# cd /workspace/ComfyUI/models/checkpoints
+# cd /home/flux/ComfyUI/models/checkpoints
 # curl -L -O https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
 
 deactivate

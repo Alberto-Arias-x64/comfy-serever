@@ -78,8 +78,8 @@ pm2 completion install
 
 # Create working directory
 print_message "Creating working directory..."
-mkdir -p /workspace
-cd /workspace
+mkdir -p /home/flux
+cd /home/flux
 
 # Setup Server
 print_message "Setting up Server..."
@@ -89,8 +89,8 @@ npm install
 
 # Setup ComfyUI
 print_message "Setting up ComfyUI..."
-chmod +x /workspace/server/utils/setup_comfy.sh
-/workspace/server/utils/setup_comfy.sh
+chmod +x /home/flux/server/utils/setup_comfy.sh
+/home/flux/server/utils/setup_comfy.sh
 
 print_message "Installation complete!"
 source ~/.bashrc

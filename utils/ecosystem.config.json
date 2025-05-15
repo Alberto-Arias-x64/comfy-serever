@@ -3,13 +3,13 @@
     {
       "name": "server",
       "script": "src/server.js",
-      "cwd": "/workspace/server"
+      "cwd": "/home/flux/server"
     },
     {
       "name": "comfy",
       "script": "main.py",
-      "cwd": "/workspace/ComfyUI",
-      "interpreter": "/workspace/ComfyUI/.venv/bin/python"
+      "cwd": "/home/flux/ComfyUI",
+      "interpreter": "/home/flux/ComfyUI/.venv/bin/python"
     }
   ]
 }

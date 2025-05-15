@@ -93,7 +93,6 @@ export async function createPrediction(prompt) {
     if (queueStatus === STATUS.PENDING) continue;
     break;
   }
-  if (queueStatus === STATUS.NOT_FOUND) return null;
   const res = processOutputs(await getResponse(prompt_id));
   if (res === null) return null;
   return res.map(file => path.join(OUTPUT_PATH, file));

@@ -32,6 +32,7 @@ const makeRequest = async (prompt) => {
 
 const consultQueue = async (id) => {
   const response = await fetch(`${COMFY_SERVER}/queue`)
+  if (!response.ok) return STATUS.NOT_FOUND;
   const queue = await response.json();
   const running = queue["queue_running"]
   const pending = queue["queue_pending"]
@@ -92,6 +93,7 @@ export async function createPrediction(prompt) {
     if (queueStatus === STATUS.PENDING) continue;
     break;
   }
+  if (queueStatus === STATUS.NOT_FOUND) return null;
   const res = processOutputs(await getResponse(prompt_id));
   if (res === null) return null;
   return res.map(file => path.join(OUTPUT_PATH, file));

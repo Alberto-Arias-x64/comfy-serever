@@ -4,7 +4,7 @@ import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const __output = path.dirname("/home/flux/ComfyUI/output/");
+const __output = "/home/flux/ComfyUI/output/";
 const __config = path.join(__dirname, "..", "config");
 const __utils = path.join(__dirname, "..", "utils");
 const __logs = path.join(__dirname, "..", "logs");

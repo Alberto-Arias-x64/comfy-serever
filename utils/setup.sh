@@ -33,6 +33,10 @@ apt update && apt upgrade -y
 print_message "Installing curl..."
 apt install -y curl
 
+# Install unzip
+print_message "Installing unzip..."
+apt install -y unzip
+
 # Install git
 print_message "Installing git..."
 apt install -y git
@@ -60,6 +64,11 @@ apt install python3-tk -y
 # Install node
 print_message "Installing node..."
 curl -o- https://fnm.vercel.app/install | bash
+FNM_PATH="/root/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
 fnm install 22
 
 #install pm2

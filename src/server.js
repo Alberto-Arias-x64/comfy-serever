@@ -70,6 +70,7 @@ try {
     } catch (error) {
       await logger.error("Error in task", { task: { ...task }, name: error.name, message: error.message, stack: error?.stack?.split("\n"), cause: error?.cause });
       await writePodLog(`Error in task: ${error.message}`);
+      await completedTask(task);
     }
   }
 } catch (error) {

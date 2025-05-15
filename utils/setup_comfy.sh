@@ -46,9 +46,9 @@ pip3 install -r requirements.txt
 pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu128
 
 # Install Models
-print_message "Installing Models..."
-cd /home/flux/ComfyUI/models/checkpoints
-curl -L -O https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
+# print_message "Installing Models..."
+# cd /home/flux/ComfyUI/models/checkpoints
+# curl -L -O https://huggingface.co/Comfy-Org/flux1-dev/resolve/main/flux1-dev-fp8.safetensors
 
 deactivate
 

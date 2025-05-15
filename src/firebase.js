@@ -94,18 +94,18 @@ export const readPendingQueue = async () => {
 
 /**
  * @param {object} task
- * @param {string[]} outputs
+ * @param {string[]} output
  * @description Moves a pending task to the completed queue
  */
-export const completedTask = async (task, outputs = []) => {
+export const completedTask = async (task, output = []) => {
   const batch = db.batch();
   batch.create(queueCompletedRef.doc(task.id), {
     id: task.id,
     created_at: task.created_at,
     updated_at: admin.firestore.Timestamp.now(),
-    status: outputs.length > 0 ? TASK_STATUS.COMPLETED : TASK_STATUS.ERROR,
+    status: output.length > 0 ? TASK_STATUS.COMPLETED : TASK_STATUS.ERROR,
     pod_id: ID,
-    outputs,
+    output,
   });
   batch.delete(queuePendingRef.doc(task.id));
   await batch.commit();

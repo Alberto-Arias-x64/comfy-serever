@@ -93,3 +93,4 @@ chmod +x /home/flux/server/utils/setup_comfy.sh
 /home/flux/server/utils/setup_comfy.sh
 
 print_message "Installation complete!"
+source ~/.bashrc

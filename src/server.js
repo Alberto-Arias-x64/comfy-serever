@@ -46,7 +46,7 @@ try {
       const { width, height } = getAspectRatio(data?.["aspect_ratio"]);
       const outputs = await createPrediction({ prompt: data?.["prompt"], width, height });
       if (outputs === null) {
-        await completedTask(task, []);
+        await completedTask(task);
         await logger.error("Error creating prediction", { ...task });
         await writePodLog(`Error creating prediction: ${task.id}`);
       }
@@ -56,7 +56,7 @@ try {
           return await uploadImage(image, id);
         });
         const uploadedImages = await Promise.all(uploadPromises);
-        await completedTask(task, uploadedImages);
+        await completedTask(task, uploadedImages[0]);
         const endTime = new Date().toISOString();
         const totalTime = (diffMilliseconds(startTime, endTime) / 1000).toFixed(2);
         await logger.info("Task completed", { totalTime, ...task });

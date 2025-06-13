@@ -49,6 +49,7 @@ ssh root@123.456.7.89 -p 40121 -i ~/.ssh/id_ed25519
 
 ### 2. Download server
 ``` bash
+# CHANGE THIS URL
 wget https://raw.githubusercontent.com/Alberto-Arias-x64/comfy-serever/main/utils/setup.sh -O setup.sh
 source setup.sh
 ```

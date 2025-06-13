@@ -83,6 +83,7 @@ cd /home/flux
 
 # Setup Server
 print_message "Setting up Server..."
+# CHANGE THIS URL
 git clone https://github.com/Alberto-Arias-x64/comfy-serever.git server
 cd server
 npm install
